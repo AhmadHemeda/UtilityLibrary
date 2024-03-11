@@ -4,22 +4,22 @@ import UIKit
 
 extension UIButton {
     
-    public var title: String? {
+    @IBInspectable public var title: String? {
         get { return self.title(for: .normal) }
         set { setTitle(newValue, for: .normal) }
     }
     
-    public var titleFont: UIFont? {
+    @IBInspectable public var titleFont: UIFont? {
         get { return titleLabel?.font }
         set { titleLabel?.font = newValue }
     }
     
-    public var attributedTitle: NSAttributedString? {
+    @IBInspectable public var attributedTitle: NSAttributedString? {
         get { return self.attributedTitle(for: .normal) }
         set { setAttributedTitle(newValue, for: .normal) }
     }
     
-    public var titleColor: UIColor? {
+    @IBInspectable public var titleColor: UIColor? {
         get { return self.titleColor(for: .normal) }
         set {
             setTitleColor(newValue, for: .normal)
@@ -31,7 +31,7 @@ extension UIButton {
         }
     }
     
-    public var titleShadowColor: UIColor? {
+    @IBInspectable public var titleShadowColor: UIColor? {
         get { return self.titleShadowColor(for: .normal) }
         set {
             setTitleShadowColor(newValue, for: .normal)
@@ -41,7 +41,7 @@ extension UIButton {
     }
     
     /// Background color for the normal state.
-    public var backgroundColorForNormal: UIColor? {
+    @IBInspectable public var backgroundColorForNormal: UIColor? {
         get {
             guard let image = backgroundImage(for: .normal),
                   let backgroundColor = image.uicolorPixel(at: CGPoint(x: 0, y: 0)) else {
@@ -60,7 +60,7 @@ extension UIButton {
     }
     
     /// Radius for rounded corners.
-    public var cornerRadius: CGFloat {
+    @IBInspectable public var cornerRadius: CGFloat {
         get { layer.cornerRadius }
         set {
             layer.cornerRadius = newValue
@@ -69,7 +69,7 @@ extension UIButton {
     }
     
     /// Border color for the button.
-    public var borderColor: UIColor? {
+    @IBInspectable public var borderColor: UIColor? {
         get { layer.borderColor != nil ? UIColor(cgColor: layer.borderColor!) : nil }
         set {
             layer.borderColor = newValue?.cgColor
@@ -78,37 +78,37 @@ extension UIButton {
     }
     
     /// Border width for the button.
-    public var borderWidth: CGFloat {
+    @IBInspectable public var borderWidth: CGFloat {
         get { layer.borderWidth }
         set { layer.borderWidth = newValue }
     }
     
     /// Shadow color for the button.
-    public var shadowColor: UIColor? {
+    @IBInspectable public var shadowColor: UIColor? {
         get { layer.shadowColor != nil ? UIColor(cgColor: layer.shadowColor!) : nil }
         set { layer.shadowColor = newValue?.cgColor }
     }
     
     /// Shadow opacity for the button.
-    public var shadowOpacity: Float {
+    @IBInspectable public var shadowOpacity: Float {
         get { layer.shadowOpacity }
         set { layer.shadowOpacity = newValue }
     }
     
     /// Shadow offset for the button.
-    public var shadowOffset: CGSize {
+    @IBInspectable public var shadowOffset: CGSize {
         get { layer.shadowOffset }
         set { layer.shadowOffset = newValue }
     }
     
     /// Shadow radius for the button.
-    public var shadowRadius: CGFloat {
+    @IBInspectable public var shadowRadius: CGFloat {
         get { layer.shadowRadius }
         set { layer.shadowRadius = newValue }
     }
     
     /// Title color for the normal state.
-    public var titleColorForNormal: UIColor? {
+    @IBInspectable public var titleColorForNormal: UIColor? {
         get { titleColor(for: .normal) }
         set {
             setTitleColor(newValue, for: .normal)
@@ -121,7 +121,7 @@ extension UIButton {
     }
     
     /// Title shadow color for the normal state.
-    public var titleShadowColorForNormal: UIColor? {
+    @IBInspectable public var titleShadowColorForNormal: UIColor? {
         get { titleShadowColor(for: .normal) }
         set {
             setTitleShadowColor(newValue, for: .normal)
@@ -131,25 +131,25 @@ extension UIButton {
     }
     
     /// Image for the normal state.
-    public var imageForNormal: UIImage? {
+    @IBInspectable public var imageForNormal: UIImage? {
         get { image(for: .normal) }
         set { setImage(newValue?.withRenderingMode(.alwaysOriginal), for: .normal) }
     }
     
     /// Image for the selected state.
-    public var selectedImage: UIImage? {
+    @IBInspectable public var selectedImage: UIImage? {
         get { image(for: .selected) }
         set { setImage(newValue?.withRenderingMode(.alwaysOriginal), for: .selected) }
     }
     
     /// Background image for the selected state.
-    public var selectedBackgroundImage: UIImage? {
+    @IBInspectable public var selectedBackgroundImage: UIImage? {
         get { backgroundImage(for: .selected) }
         set { setBackgroundImage(newValue?.withRenderingMode(.alwaysOriginal), for: .selected) }
     }
     
     /// Background image for the disabled state.
-    public var disabledBackgroundImage: UIImage? {
+    @IBInspectable public var disabledBackgroundImage: UIImage? {
         get { backgroundImage(for: .disabled) }
         set { setBackgroundImage(newValue?.withRenderingMode(.alwaysOriginal), for: .disabled) }
     }
