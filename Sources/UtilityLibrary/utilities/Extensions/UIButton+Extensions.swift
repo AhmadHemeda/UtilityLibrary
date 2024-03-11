@@ -6,7 +6,7 @@ extension UIButton {
     /// - Parameters:
     ///   - color: The color to set as the background color.
     ///   - state: The control state for which to set the background color.
-    func setBackgroundColor(_ color: UIColor, for state: UIControl.State) {
+    public func setBackgroundColor(_ color: UIColor, for state: UIControl.State) {
         UIGraphicsBeginImageContext(CGSize(width: 1, height: 1))
         if let context = UIGraphicsGetCurrentContext() {
             context.setFillColor(color.cgColor)
@@ -20,7 +20,7 @@ extension UIButton {
     /// Adds rounded corners to the button with specified radius.
     ///
     /// - Parameter radius: The radius to use when rounding the button's corners.
-    func addRoundedCorners(radius: CGFloat) {
+    public func addRoundedCorners(radius: CGFloat) {
         self.layer.cornerRadius = radius
         self.clipsToBounds = true
     }
@@ -30,7 +30,7 @@ extension UIButton {
     /// - Parameters:
     ///   - color: The color of the border.
     ///   - width: The width of the border.
-    func setBorder(color: UIColor, width: CGFloat) {
+    public func setBorder(color: UIColor, width: CGFloat) {
         self.layer.borderColor = color.cgColor
         self.layer.borderWidth = width
     }
@@ -42,7 +42,7 @@ extension UIButton {
     ///   - opacity: The opacity of the shadow.
     ///   - offset: The offset of the shadow.
     ///   - radius: The radius of the shadow.
-    func addShadowEffect(color: UIColor, opacity: Float, offset: CGSize, radius: CGFloat) {
+    public func addShadowEffect(color: UIColor, opacity: Float, offset: CGSize, radius: CGFloat) {
         layer.shadowColor = color.cgColor
         layer.shadowOpacity = opacity
         layer.shadowOffset = offset
@@ -55,7 +55,7 @@ extension UIButton {
     /// - Parameters:
     ///   - color: The color to set as the title color.
     ///   - state: The control state for which to set the title color.
-    func setTitleTextColor(_ color: UIColor, for state: UIControl.State) {
+    public func setTitleTextColor(_ color: UIColor, for state: UIControl.State) {
         self.setTitleColor(color, for: state)
     }
 }
