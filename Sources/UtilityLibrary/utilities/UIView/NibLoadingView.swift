@@ -1,10 +1,10 @@
 import UIKit
 
-class NibLoadingView: UIView {
+public class NibLoadingView: UIView {
     
     var contentView: UIView?
     
-    override init(frame: CGRect) {
+    public override init(frame: CGRect) {
         super.init(frame: frame)
         commonInit()
     }
