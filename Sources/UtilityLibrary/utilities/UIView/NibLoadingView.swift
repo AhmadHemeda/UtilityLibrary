@@ -1,6 +1,6 @@
 import UIKit
 
-public class NibLoadingView: UIView {
+open class NibLoadingView: UIView {
     
     var contentView: UIView?
     
@@ -9,7 +9,7 @@ public class NibLoadingView: UIView {
         commonInit()
     }
     
-    required init?(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         commonInit()
     }
