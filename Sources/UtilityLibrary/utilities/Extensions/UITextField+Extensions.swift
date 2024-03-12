@@ -1,54 +1,84 @@
 import UIKit
 
 public extension UITextField {
-    /// Convenience initializer for creating a UITextField with specified placeholder, font, and color.
-    ///
-    /// - Parameters:
-    ///   - placeholder: The placeholder text to be displayed.
-    ///   - font: The font of the text.
-    ///   - color: The color of the text.
-    convenience init(placeholder: String, font: UIFont, color: UIColor) {
-        self.init()
+    
+    // MARK: - Text
+    
+    func setCustomText(_ text: String?) {
+        self.text = text
+    }
+    
+    func customText() -> String? {
+        return text
+    }
+    
+    // MARK: - Placeholder
+    
+    func setCustomPlaceholder(_ placeholder: String?) {
         self.placeholder = placeholder
+    }
+    
+    func customPlaceholder() -> String? {
+        return placeholder
+    }
+    
+    // MARK: - Text Color
+    
+    func setCustomTextColor(_ color: UIColor?) {
+        textColor = color
+    }
+    
+    func customTextColor() -> UIColor? {
+        return textColor
+    }
+    
+    // MARK: - Font
+    
+    func setCustomFont(_ font: UIFont?) {
         self.font = font
-        self.textColor = color
     }
-
-    /// Adds left padding to the text field's text.
-    ///
-    /// - Parameter padding: The amount of padding to add.
-    func addLeftPadding(_ padding: CGFloat) {
-        let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: padding, height: self.frame.size.height))
-        self.leftView = paddingView
-        self.leftViewMode = .always
+    
+    func customFont() -> UIFont? {
+        return font
     }
-
-    /// Adds right padding to the text field's text.
-    ///
-    /// - Parameter padding: The amount of padding to add.
-    func addRightPadding(_ padding: CGFloat) {
-        let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: padding, height: self.frame.size.height))
-        self.rightView = paddingView
-        self.rightViewMode = .always
+    
+    // MARK: - Border Style
+    
+    func setCustomBorderStyle(_ style: UITextField.BorderStyle) {
+        borderStyle = style
     }
-
-    /// Set the text color for a specific range of the text field's text.
-    ///
-    /// - Parameters:
-    ///   - color: The color to set as the text color.
-    ///   - range: The range of text to which the color will be applied.
-    func setTextColor(_ color: UIColor, forRange range: NSRange) {
-        guard let attributedText = self.attributedText else { return }
-        let mutableAttributedText = NSMutableAttributedString(attributedString: attributedText)
-        mutableAttributedText.addAttribute(NSAttributedString.Key.foregroundColor, value: color, range: range)
-        self.attributedText = mutableAttributedText
+    
+    func customBorderStyle() -> UITextField.BorderStyle {
+        return borderStyle
     }
-
-    /// Set the placeholder color for the text field.
-    ///
-    /// - Parameter color: The color to set as the placeholder color.
-    func setPlaceholderColor(_ color: UIColor) {
-        guard let placeholder = self.placeholder else { return }
-        self.attributedPlaceholder = NSAttributedString(string: placeholder, attributes: [NSAttributedString.Key.foregroundColor: color])
+    
+    // MARK: - Clear Button Mode
+    
+    func setCustomClearButtonMode(_ mode: UITextField.ViewMode) {
+        clearButtonMode = mode
+    }
+    
+    func customClearButtonMode() -> UITextField.ViewMode {
+        return clearButtonMode
+    }
+    
+    // MARK: - Keyboard Type
+    
+    func setCustomKeyboardType(_ type: UIKeyboardType) {
+        keyboardType = type
+    }
+    
+    func customKeyboardType() -> UIKeyboardType {
+        return keyboardType
+    }
+    
+    // MARK: - Secure Text Entry
+    
+    func setCustomSecureTextEntry(_ isSecure: Bool) {
+        isSecureTextEntry = isSecure
+    }
+    
+    func customSecureTextEntry() -> Bool {
+        return isSecureTextEntry
     }
 }

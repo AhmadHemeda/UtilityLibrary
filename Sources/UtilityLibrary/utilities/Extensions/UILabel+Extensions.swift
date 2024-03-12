@@ -1,48 +1,111 @@
 import UIKit
 
 public extension UILabel {
-    /// Convenience initializer for creating a UILabel with specified text, font, and color.
-    ///
-    /// - Parameters:
-    ///   - text: The text to be displayed.
-    ///   - font: The font of the text.
-    ///   - color: The color of the text.
-    convenience init(text: String, font: UIFont, color: UIColor) {
-        self.init()
+    
+    // MARK: - Text
+    
+    func setCustomText(_ text: String?) {
         self.text = text
+    }
+    
+    func customText() -> String? {
+        return text
+    }
+    
+    // MARK: - Text Color
+    
+    func setCustomTextColor(_ color: UIColor?) {
+        textColor = color
+    }
+    
+    func customTextColor() -> UIColor? {
+        return textColor
+    }
+    
+    // MARK: - Font
+    
+    func setCustomFont(_ font: UIFont?) {
         self.font = font
-        self.textColor = color
     }
-
-    /// Adds an underline to the label's text.
-    func addUnderline() {
-        guard let text = self.text else { return }
-        let attributedString = NSMutableAttributedString(string: text)
-        attributedString.addAttribute(NSAttributedString.Key.underlineStyle, value: NSUnderlineStyle.single.rawValue, range: NSRange(location: 0, length: attributedString.length))
-        self.attributedText = attributedString
+    
+    func customFont() -> UIFont? {
+        return font
     }
-
-    /// Sets the text color for a specified range of the label's text.
-    ///
-    /// - Parameters:
-    ///   - color: The color to set as the text color.
-    ///   - range: The range of text to which the color will be applied.
-    func setTextColor(_ color: UIColor, forRange range: NSRange) {
-        guard let attributedText = self.attributedText else { return }
-        let mutableAttributedText = NSMutableAttributedString(attributedString: attributedText)
-        mutableAttributedText.addAttribute(NSAttributedString.Key.foregroundColor, value: color, range: range)
-        self.attributedText = mutableAttributedText
+    
+    // MARK: - Attributed Text
+    
+    func setCustomAttributedText(_ attributedText: NSAttributedString?) {
+        self.attributedText = attributedText
     }
-
-    /// Sets the line spacing for the label's text.
-    ///
-    /// - Parameter spacing: The line spacing to set.
-    func setLineSpacing(_ spacing: CGFloat) {
-        guard let text = self.text else { return }
-        let paragraphStyle = NSMutableParagraphStyle()
-        paragraphStyle.lineSpacing = spacing
-        let attributedString = NSMutableAttributedString(string: text)
-        attributedString.addAttribute(NSAttributedString.Key.paragraphStyle, value: paragraphStyle, range: NSRange(location: 0, length: attributedString.length))
-        self.attributedText = attributedString
+    
+    func customAttributedText() -> NSAttributedString? {
+        return attributedText
+    }
+    
+    // MARK: - Text Alignment
+    
+    func setCustomTextAlignment(_ alignment: NSTextAlignment) {
+        textAlignment = alignment
+    }
+    
+    func customTextAlignment() -> NSTextAlignment {
+        return textAlignment
+    }
+    
+    // MARK: - Number of Lines
+    
+    func setCustomNumberOfLines(_ numberOfLines: Int) {
+        self.numberOfLines = numberOfLines
+    }
+    
+    func customNumberOfLines() -> Int {
+        return numberOfLines
+    }
+    
+    // MARK: - Line Break Mode
+    
+    func setCustomLineBreakMode(_ lineBreakMode: NSLineBreakMode) {
+        self.lineBreakMode = lineBreakMode
+    }
+    
+    func customLineBreakMode() -> NSLineBreakMode {
+        return lineBreakMode
+    }
+    
+    // MARK: - Shadow
+    
+    func setShadow(color: UIColor?, opacity: Float, offset: CGSize, radius: CGFloat) {
+        layer.shadowColor = color?.cgColor
+        layer.shadowOpacity = opacity
+        layer.shadowOffset = offset
+        layer.shadowRadius = radius
+    }
+    
+    func shadowColor() -> UIColor? {
+        return layer.shadowColor != nil ? UIColor(cgColor: layer.shadowColor!) : nil
+    }
+    
+    func setShadowOpacity(_ opacity: Float) {
+        layer.shadowOpacity = opacity
+    }
+    
+    func shadowOpacity() -> Float {
+        return layer.shadowOpacity
+    }
+    
+    func setShadowOffset(_ offset: CGSize) {
+        layer.shadowOffset = offset
+    }
+    
+    func shadowOffset() -> CGSize {
+        return layer.shadowOffset
+    }
+    
+    func setShadowRadius(_ radius: CGFloat) {
+        layer.shadowRadius = radius
+    }
+    
+    func shadowRadius() -> CGFloat {
+        return layer.shadowRadius
     }
 }
