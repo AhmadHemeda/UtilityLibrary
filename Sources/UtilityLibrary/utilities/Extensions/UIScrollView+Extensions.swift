@@ -1,6 +1,6 @@
 import UIKit
 
-extension UIScrollView {
+public extension UIScrollView {
     /// Scrolls to the top of the scroll view with optional animation.
     ///
     /// - Parameter animated: Whether to animate the scrolling (default is true).

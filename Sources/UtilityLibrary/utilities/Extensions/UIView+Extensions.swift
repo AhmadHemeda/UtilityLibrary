@@ -1,6 +1,6 @@
 import UIKit
 
-extension UIView {
+public extension UIView {
     /// Adds a border to the view with specified color, width, and corner radius.
     ///
     /// - Parameters:

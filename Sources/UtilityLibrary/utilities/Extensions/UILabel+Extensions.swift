@@ -1,6 +1,6 @@
 import UIKit
 
-extension UILabel {
+public extension UILabel {
     /// Convenience initializer for creating a UILabel with specified text, font, and color.
     ///
     /// - Parameters:

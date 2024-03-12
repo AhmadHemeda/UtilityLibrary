@@ -1,184 +1,121 @@
 import UIKit
 
-// MARK: - Property for state
-
-extension UIButton {
+public extension UIButton {
     
-    @IBInspectable public var title: String? {
-        get { return self.title(for: .normal) }
-        set { setTitle(newValue, for: .normal) }
+    // MARK: - Title
+    
+    func setCustomTitle(_ title: String?, for state: UIControl.State) {
+        setTitle(title, for: state)
     }
     
-    @IBInspectable public var titleFont: UIFont? {
-        get { return titleLabel?.font }
-        set { titleLabel?.font = newValue }
+    func customTitle(for state: UIControl.State) -> String? {
+        title(for: state)
     }
     
-    @IBInspectable public var attributedTitle: NSAttributedString? {
-        get { return self.attributedTitle(for: .normal) }
-        set { setAttributedTitle(newValue, for: .normal) }
+    // MARK: - Title Font
+    
+    func setTitleFont(_ font: UIFont?, for state: UIControl.State) {
+        titleLabel?.font = font
     }
     
-    @IBInspectable public var titleColor: UIColor? {
-        get { return self.titleColor(for: .normal) }
-        set {
-            setTitleColor(newValue, for: .normal)
-            setTitleColor(newValue?.withAlphaComponent(0.5), for: .disabled)
-            setTitleColor(newValue, for: .selected)
-            if buttonType == .custom {
-                setTitleColor(newValue?.withAlphaComponent(0.5), for: .highlighted)
-            }
-        }
+    func titleFont(for state: UIControl.State) -> UIFont? {
+        titleLabel?.font
     }
     
-    @IBInspectable public var titleShadowColor: UIColor? {
-        get { return self.titleShadowColor(for: .normal) }
-        set {
-            setTitleShadowColor(newValue, for: .normal)
-            setTitleShadowColor(newValue?.withAlphaComponent(0.5), for: .disabled)
-            setTitleShadowColor(newValue, for: .selected)
-        }
+    // MARK: - Attributed Title
+    
+    func setCustomAttributedTitle(_ title: NSAttributedString?, for state: UIControl.State) {
+        setAttributedTitle(title, for: state)
     }
     
-    /// Background color for the normal state.
-    @IBInspectable public var backgroundColorForNormal: UIColor? {
-        get {
-            guard let image = backgroundImage(for: .normal),
-                  let backgroundColor = image.uicolorPixel(at: CGPoint(x: 0, y: 0)) else {
-                return nil
-            }
-            return backgroundColor
-        }
-        set {
-            guard let color = newValue else {
-                setBackgroundImage(nil, for: .normal)
-                return
-            }
-            let image = UIButton.imageWithColor(color: color, size: CGSize(width: 1, height: 1))
-            setBackgroundImage(image, for: .normal)
-        }
+    func customAttributedTitle(for state: UIControl.State) -> NSAttributedString? {
+        attributedTitle(for: state)
     }
     
-    /// Radius for rounded corners.
-    @IBInspectable public var cornerRadius: CGFloat {
-        get { layer.cornerRadius }
-        set {
-            layer.cornerRadius = newValue
-            clipsToBounds = true
-        }
+    // MARK: - Title Color
+    
+    func setCustomTitleColor(_ color: UIColor?, for state: UIControl.State) {
+        setTitleColor(color, for: state)
     }
     
-    /// Border color for the button.
-    @IBInspectable public var borderColor: UIColor? {
-        get { layer.borderColor != nil ? UIColor(cgColor: layer.borderColor!) : nil }
-        set {
-            layer.borderColor = newValue?.cgColor
-            layer.borderWidth = borderWidth
-        }
+    func customTitleColor(for state: UIControl.State) -> UIColor? {
+        titleColor(for: state)
     }
     
-    /// Border width for the button.
-    @IBInspectable public var borderWidth: CGFloat {
-        get { layer.borderWidth }
-        set { layer.borderWidth = newValue }
+    // MARK: - Title Shadow Color
+    
+    func setCustomTitleShadowColor(_ color: UIColor?, for state: UIControl.State) {
+        setTitleShadowColor(color, for: state)
     }
     
-    /// Shadow color for the button.
-    @IBInspectable public var shadowColor: UIColor? {
-        get { layer.shadowColor != nil ? UIColor(cgColor: layer.shadowColor!) : nil }
-        set { layer.shadowColor = newValue?.cgColor }
+    func customTitleShadowColor(for state: UIControl.State) -> UIColor? {
+        titleShadowColor(for: state)
     }
     
-    /// Shadow opacity for the button.
-    @IBInspectable public var shadowOpacity: Float {
-        get { layer.shadowOpacity }
-        set { layer.shadowOpacity = newValue }
+    // MARK: - Corner Radius
+    
+    func setCornerRadius(_ radius: CGFloat) {
+        layer.cornerRadius = radius
+        clipsToBounds = true
     }
     
-    /// Shadow offset for the button.
-    @IBInspectable public var shadowOffset: CGSize {
-        get { layer.shadowOffset }
-        set { layer.shadowOffset = newValue }
+    func cornerRadius() -> CGFloat {
+        layer.cornerRadius
     }
     
-    /// Shadow radius for the button.
-    @IBInspectable public var shadowRadius: CGFloat {
-        get { layer.shadowRadius }
-        set { layer.shadowRadius = newValue }
+    // MARK: - Border Color
+    
+    func setBorderColor(_ color: UIColor?, width: CGFloat) {
+        layer.borderColor = color?.cgColor
+        layer.borderWidth = width
     }
     
-    /// Title color for the normal state.
-    @IBInspectable public var titleColorForNormal: UIColor? {
-        get { titleColor(for: .normal) }
-        set {
-            setTitleColor(newValue, for: .normal)
-            setTitleColor(newValue?.withAlphaComponent(0.5), for: .disabled)
-            setTitleColor(newValue, for: .selected)
-            if buttonType == .custom {
-                setTitleColor(newValue?.withAlphaComponent(0.5), for: .highlighted)
-            }
-        }
+    func borderColor() -> UIColor? {
+        layer.borderColor != nil ? UIColor(cgColor: layer.borderColor!) : nil
     }
     
-    /// Title shadow color for the normal state.
-    @IBInspectable public var titleShadowColorForNormal: UIColor? {
-        get { titleShadowColor(for: .normal) }
-        set {
-            setTitleShadowColor(newValue, for: .normal)
-            setTitleShadowColor(newValue?.withAlphaComponent(0.5), for: .disabled)
-            setTitleShadowColor(newValue, for: .selected)
-        }
+    func setBorderWidth(_ width: CGFloat) {
+        layer.borderWidth = width
     }
     
-    /// Image for the normal state.
-    @IBInspectable public var imageForNormal: UIImage? {
-        get { image(for: .normal) }
-        set { setImage(newValue?.withRenderingMode(.alwaysOriginal), for: .normal) }
+    func borderWidth() -> CGFloat {
+        layer.borderWidth
     }
     
-    /// Image for the selected state.
-    @IBInspectable public var selectedImage: UIImage? {
-        get { image(for: .selected) }
-        set { setImage(newValue?.withRenderingMode(.alwaysOriginal), for: .selected) }
+    // MARK: - Shadow
+    
+    func setShadow(color: UIColor?, opacity: Float, offset: CGSize, radius: CGFloat) {
+        layer.shadowColor = color?.cgColor
+        layer.shadowOpacity = opacity
+        layer.shadowOffset = offset
+        layer.shadowRadius = radius
     }
     
-    /// Background image for the selected state.
-    @IBInspectable public var selectedBackgroundImage: UIImage? {
-        get { backgroundImage(for: .selected) }
-        set { setBackgroundImage(newValue?.withRenderingMode(.alwaysOriginal), for: .selected) }
+    func shadowColor() -> UIColor? {
+        layer.shadowColor != nil ? UIColor(cgColor: layer.shadowColor!) : nil
     }
     
-    /// Background image for the disabled state.
-    @IBInspectable public var disabledBackgroundImage: UIImage? {
-        get { backgroundImage(for: .disabled) }
-        set { setBackgroundImage(newValue?.withRenderingMode(.alwaysOriginal), for: .disabled) }
+    func setShadowOpacity(_ opacity: Float) {
+        layer.shadowOpacity = opacity
     }
     
-    // MARK: - Helper Methods
+    func shadowOpacity() -> Float {
+        layer.shadowOpacity
+    }
     
-    /// Helper method to create an image with a specified color and size.
-    private static func imageWithColor(color: UIColor, size: CGSize) -> UIImage {
-        UIGraphicsBeginImageContextWithOptions(size, false, 0)
-        color.setFill()
-        UIRectFill(CGRect(origin: .zero, size: size))
-        let image = UIGraphicsGetImageFromCurrentImageContext()!
-        UIGraphicsEndImageContext()
-        return image
+    func setShadowOffset(_ offset: CGSize) {
+        layer.shadowOffset = offset
+    }
+    
+    func shadowOffset() -> CGSize {
+        layer.shadowOffset
+    }
+    
+    func setShadowRadius(_ radius: CGFloat) {
+        layer.shadowRadius = radius
+    }
+    
+    func shadowRadius() -> CGFloat {
+        layer.shadowRadius
     }
 }
-
-extension UIImage {
-    /// Get the pixel color at a specific point in the image.
-    func uicolorPixel(at point: CGPoint) -> UIColor? {
-        guard let cgImage = self.cgImage else { return nil }
-        let pixelData = cgImage.dataProvider?.data
-        let data: UnsafePointer<UInt8> = CFDataGetBytePtr(pixelData)
-        let pixelInfo: Int = ((Int(self.size.width) * Int(point.y)) + Int(point.x)) * 4
-        let red: CGFloat = CGFloat(data[pixelInfo]) / 255.0
-        let green: CGFloat = CGFloat(data[pixelInfo + 1]) / 255.0
-        let blue: CGFloat = CGFloat(data[pixelInfo + 2]) / 255.0
-        let alpha: CGFloat = CGFloat(data[pixelInfo + 3]) / 255.0
-        return UIColor(red: red, green: green, blue: blue, alpha: alpha)
-    }
-}
-

@@ -1,6 +1,6 @@
 import UIKit
 
-extension UITextField {
+public extension UITextField {
     /// Convenience initializer for creating a UITextField with specified placeholder, font, and color.
     ///
     /// - Parameters:
