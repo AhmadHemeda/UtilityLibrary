@@ -1,35 +1,73 @@
 import UIKit
 
 public extension UIScrollView {
-    /// Scrolls to the top of the scroll view with optional animation.
-    ///
-    /// - Parameter animated: Whether to animate the scrolling (default is true).
-    func scrollToTop(animated: Bool = true) {
-        let desiredOffset = CGPoint(x: 0, y: -contentInset.top)
-        setContentOffset(desiredOffset, animated: animated)
+    
+    // MARK: - Content Inset
+    
+    func setCustomContentInset(_ inset: UIEdgeInsets) {
+        contentInset = inset
     }
-
-    /// Scrolls to the bottom of the scroll view with optional animation.
-    ///
-    /// - Parameter animated: Whether to animate the scrolling (default is true).
-    func scrollToBottom(animated: Bool = true) {
-        let desiredOffset = CGPoint(x: 0, y: contentSize.height - bounds.size.height + contentInset.bottom)
-        setContentOffset(desiredOffset, animated: animated)
+    
+    func customContentInset() -> UIEdgeInsets {
+        return contentInset
     }
-
-    /// Scrolls to the left edge of the scroll view with optional animation.
-    ///
-    /// - Parameter animated: Whether to animate the scrolling (default is true).
-    func scrollToLeftEdge(animated: Bool = true) {
-        let desiredOffset = CGPoint(x: -contentInset.left, y: 0)
-        setContentOffset(desiredOffset, animated: animated)
+    
+    // MARK: - Content Offset
+    
+    func setCustomContentOffset(_ offset: CGPoint, animated: Bool = false) {
+        setContentOffset(offset, animated: animated)
     }
-
-    /// Scrolls to the right edge of the scroll view with optional animation.
-    ///
-    /// - Parameter animated: Whether to animate the scrolling (default is true).
-    func scrollToRightEdge(animated: Bool = true) {
-        let desiredOffset = CGPoint(x: contentSize.width - bounds.size.width + contentInset.right, y: 0)
-        setContentOffset(desiredOffset, animated: animated)
+    
+    func customContentOffset() -> CGPoint {
+        return contentOffset
+    }
+    
+    // MARK: - Content Size
+    
+    func setCustomContentSize(_ size: CGSize) {
+        contentSize = size
+    }
+    
+    func customContentSize() -> CGSize {
+        return contentSize
+    }
+    
+    // MARK: - Scroll Indicators
+    
+    func setCustomShowsVerticalScrollIndicator(_ show: Bool) {
+        showsVerticalScrollIndicator = show
+    }
+    
+    func customShowsVerticalScrollIndicator() -> Bool {
+        return showsVerticalScrollIndicator
+    }
+    
+    func setCustomShowsHorizontalScrollIndicator(_ show: Bool) {
+        showsHorizontalScrollIndicator = show
+    }
+    
+    func customShowsHorizontalScrollIndicator() -> Bool {
+        return showsHorizontalScrollIndicator
+    }
+    
+    // MARK: - Scroll Enabled
+    
+    func setCustomScrollEnabled(_ enabled: Bool) {
+        isScrollEnabled = enabled
+    }
+    
+    func customScrollEnabled() -> Bool {
+        return isScrollEnabled
+    }
+    
+    // MARK: - Bounces
+    
+    func setCustomBounces(_ bounces: Bool) {
+        alwaysBounceVertical = bounces
+        alwaysBounceHorizontal = bounces
+    }
+    
+    func customBounces() -> Bool {
+        return alwaysBounceVertical && alwaysBounceHorizontal
     }
 }
