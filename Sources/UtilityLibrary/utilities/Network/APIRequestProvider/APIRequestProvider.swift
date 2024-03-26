@@ -1,20 +1,15 @@
-//
-//  File.swift
-//  
-//
-//  Created by Ahmad Hemeda on 26/03/2024.
-//
-
 import Foundation
+import Combine
 
-class APIRequestProvider: APIRequestProviderProtocol {
+@available(iOS 13.0, *)
+open class APIRequestProvider: APIRequestProviderProtocol {
     private let session: URLSession
     
-    init(session: URLSession = URLSession.shared) {
+    public init(session: URLSession = URLSession.shared) {
         self.session = session
     }
     
-    func makeRequest<T: APIRequestProtocol>(request: T) -> AnyPublisher<T.ResponseType, Error> {
+    public func makeRequest<T: APIRequestProtocol>(request: T) -> AnyPublisher<T.ResponseType, Error> {
         var urlRequest = URLRequest(url: request.baseURL.appendingPathComponent(request.path))
         urlRequest.httpMethod = request.method
         urlRequest.allHTTPHeaderFields = request.headers

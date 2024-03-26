@@ -1,7 +1,7 @@
 import Foundation
 import Combine
 
-protocol APIRequestProtocol {
+public protocol APIRequestProtocol {
     associatedtype ResponseType: Decodable
     var baseURL: URL { get }
     var path: String { get }

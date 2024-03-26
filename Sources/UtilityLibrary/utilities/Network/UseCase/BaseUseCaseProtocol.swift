@@ -1,13 +1,8 @@
-//
-//  File.swift
-//  
-//
-//  Created by Ahmad Hemeda on 26/03/2024.
-//
-
 import Foundation
+import Combine
 
-protocol BaseUseCaseProtocol {
+@available(iOS 13.0, *)
+public protocol BaseUseCaseProtocol {
     associatedtype RequestDataType
     associatedtype ResponseDataType
     func execute(requestData: RequestDataType) -> AnyPublisher<ResponseDataType, Error>

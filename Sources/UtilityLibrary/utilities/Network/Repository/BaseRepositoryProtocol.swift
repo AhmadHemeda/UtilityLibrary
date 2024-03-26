@@ -1,14 +1,8 @@
-//
-//  File.swift
-//  
-//
-//  Created by Ahmad Hemeda on 26/03/2024.
-//
-
 import Foundation
+import Combine
 
-protocol BaseRepositoryProtocol {
+@available(iOS 13.0, *)
+public protocol BaseRepositoryProtocol {
     associatedtype T
     func fetchData() -> AnyPublisher<T, Error>
-    func saveData(data: T) -> AnyPublisher<Void, Error>
 }

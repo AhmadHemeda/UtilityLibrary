@@ -1,12 +1,7 @@
-//
-//  File.swift
-//  
-//
-//  Created by Ahmad Hemeda on 26/03/2024.
-//
-
 import Foundation
+import Combine
 
-protocol APIRequestProviderProtocol {
+@available(iOS 13.0, *)
+public protocol APIRequestProviderProtocol {
     func makeRequest<T: APIRequestProtocol>(request: T) -> AnyPublisher<T.ResponseType, Error>
 }

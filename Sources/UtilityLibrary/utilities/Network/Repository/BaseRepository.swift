@@ -1,18 +1,11 @@
-//
-//  File.swift
-//  
-//
-//  Created by Ahmad Hemeda on 26/03/2024.
-//
-
 import Foundation
+import Combine
 
-class BaseRepository<T>: BaseRepositoryProtocol {
-    func fetchData() -> AnyPublisher<T, Error> {
-        return Empty(completeImmediately: true).eraseToAnyPublisher()
-    }
+@available(iOS 13.0, *)
+open class BaseRepository<T>: BaseRepositoryProtocol {
+    public init() {}
     
-    func saveData(data: T) -> AnyPublisher<Void, Error> {
+    open func fetchData() -> AnyPublisher<T, Error> {
         return Empty(completeImmediately: true).eraseToAnyPublisher()
     }
 }

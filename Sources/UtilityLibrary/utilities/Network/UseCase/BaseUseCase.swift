@@ -1,14 +1,11 @@
-//
-//  File.swift
-//  
-//
-//  Created by Ahmad Hemeda on 26/03/2024.
-//
-
 import Foundation
+import Combine
 
-class BaseUseCase<RequestData, ResponseData>: BaseUseCaseProtocol {
-    func execute(requestData: RequestData) -> AnyPublisher<ResponseData, Error> {
+@available(iOS 13.0, *)
+open class BaseUseCase<RequestData, ResponseData>: BaseUseCaseProtocol {
+    public init() {}
+    
+    open func execute(requestData: RequestData) -> AnyPublisher<ResponseData, Error> {
         return Empty(completeImmediately: true).eraseToAnyPublisher()
     }
 }

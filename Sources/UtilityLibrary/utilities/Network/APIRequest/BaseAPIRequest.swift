@@ -1,21 +1,15 @@
-//
-//  File.swift
-//  
-//
-//  Created by Ahmad Hemeda on 26/03/2024.
-//
-
 import Foundation
+import Combine
 
-class BaseAPIRequest<Response: Decodable>: APIRequestProtocol {
-    typealias ResponseType = Response
-    let baseURL: URL
-    let path: String
-    let method: String
-    let headers: [String: String]?
-    let body: Data?
+open class BaseAPIRequest<Response: Decodable>: APIRequestProtocol {
+    public typealias ResponseType = Response
+    public let baseURL: URL
+    public let path: String
+    public let method: String
+    public let headers: [String: String]?
+    public let body: Data?
     
-    init(baseURL: URL, path: String, method: String, headers: [String: String]? = nil, body: Data? = nil) {
+    public init(baseURL: URL, path: String, method: String, headers: [String: String]? = nil, body: Data? = nil) {
         self.baseURL = baseURL
         self.path = path
         self.method = method
