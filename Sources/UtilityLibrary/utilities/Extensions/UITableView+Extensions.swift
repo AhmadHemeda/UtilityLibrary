@@ -78,19 +78,19 @@ public extension UITableView {
     
     // MARK: - Scroll Indicators
     
-    func setCustomShowsVerticalScrollIndicator(_ show: Bool) {
-        showsVerticalScrollIndicator = show
-    }
-    
-    func customShowsVerticalScrollIndicator() -> Bool {
-        return showsVerticalScrollIndicator
-    }
-    
-    func setCustomShowsHorizontalScrollIndicator(_ show: Bool) {
-        showsHorizontalScrollIndicator = show
-    }
-    
-    func customShowsHorizontalScrollIndicator() -> Bool {
-        return showsHorizontalScrollIndicator
-    }
+//    func setCustomShowsVerticalScrollIndicator(_ show: Bool) {
+//        showsVerticalScrollIndicator = show
+//    }
+//    
+//    func customShowsVerticalScrollIndicator() -> Bool {
+//        return showsVerticalScrollIndicator
+//    }
+//    
+//    func setCustomShowsHorizontalScrollIndicator(_ show: Bool) {
+//        showsHorizontalScrollIndicator = show
+//    }
+//    
+//    func customShowsHorizontalScrollIndicator() -> Bool {
+//        return showsHorizontalScrollIndicator
+//    }
 }
